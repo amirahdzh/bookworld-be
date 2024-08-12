@@ -9,8 +9,38 @@ class CategorySeeder extends Seeder
 {
     public function run()
     {
-        // Create 10 categories
-        Category::factory()->count(10)->create();
+
+        Category::create([
+            'name' => 'No Category',
+        ]);
+
+        Category::create([
+            'name' => 'Mystery',
+        ]);
+
+        Category::create([
+            'name' => 'Fiction',
+        ]);
+
+        Category::create([
+            'name' => 'Self-Help',
+        ]);
+
+        Category::create([
+            'name' => 'Science Fiction',
+        ]);
+
+        Category::create([
+            'name' => 'Drama',
+        ]);
+
+        Category::create([
+            'name' => 'Fantasy',
+        ]);
+
+        Category::create([
+            'name' => 'Business',
+        ]);
     }
 }
 

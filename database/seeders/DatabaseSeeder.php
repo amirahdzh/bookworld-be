@@ -4,8 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\Book;
-use App\Models\Category;
+use App\Models\Borrow;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -46,27 +45,14 @@ class DatabaseSeeder extends Seeder
             // 'email_verified_at' => Carbon::now()
         ]);
 
-        Category::create([
-            'name' => 'No Category',
+        $this->call([
+            CategorySeeder::class,
+            BookSeeder::class,
+            BorrowSeeder::class,
         ]);
 
-        Category::create([
-            'name' => 'Mystery',
-        ]);
-        $dataCategory = Category::where('name', '!=', 'No Category')->first();
-        Book::create(
-            [
-                'title' => 'Pink dan segala artinya',
-                'summary' => "Buku ini menceritakan kisah dari lahirnya sebuah warna yang sekarang diminimati oleh bnayak kaum perempuan. Buku ini juga disajikan untuk mengenal makna lebih dalam dari suatu warna, khususnya pink dan bahasan-bahassan menarik lainnya.",
-                'stock' => 20,
-                'category_id' => $dataCategory->id,
-                'image' => 'http://localhost:8000/storage/images/book-1.jpg'
-            ]
-        );
+        // Borrow::create([
 
-        // $this->call([
-        //     CategorySeeder::class,
-        //     BookSeeder::class,
         // ]);
     }
 }

@@ -25,8 +25,7 @@ Route::prefix('v1')->group(function () {
     Route::apiResource('book', BookController::class);
     Route::get('/books/search', [BookController::class, 'search']);
     Route::apiResource('category', CategoryController::class);
-    Route::get('/category/{categoryId}/books', [CategoryController::class, 'getBooksByCategory']);
-    Route::get('/category/{categoryId}/books', [CategoryController::class, 'getBooksByCategory']);
+    Route::get('/category/{categoryId}/books', [CategoryController::class, 'getBooksByCategory']); //undocumented
     Route::apiResource('role', RoleController::class);
     Route::prefix('auth')->group(function () {
         Route::post('/register', [AuthController::class, 'register']);
@@ -37,7 +36,7 @@ Route::prefix('v1')->group(function () {
     Route::post('/profile', [ProfileController::class, 'store'])->middleware('auth:api');
     Route::post('/borrow', [BorrowController::class, 'store'])->middleware('auth:api');
     Route::get('/borrow', [BorrowController::class, 'index'])->middleware('auth:api', 'isOwner');
-    Route::put('/borrow/{id}', [BorrowController::class, 'update'])->middleware('auth:api', 'isOwner');
+    Route::put('/borrow/{id}', [BorrowController::class, 'update'])->middleware('auth:api', 'isOwner'); //undocumented
     Route::delete('/borrow/{id}', [BorrowController::class, 'destroy'])->middleware('auth:api', 'isOwner');
     Route::get('/borrow/my-borrow', [BorrowController::class, 'borrowedByUser'])->middleware('auth:api');
 

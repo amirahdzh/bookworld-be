@@ -20,6 +20,9 @@ return new class extends Migration
             $table->uuid('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
+
+            // Add unique constraint to user_id and book_id combination
+            $table->unique(['user_id', 'book_id']);
         });
     }
 

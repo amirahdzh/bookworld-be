@@ -64,30 +64,6 @@ class BookController extends Controller
         }
     }
 
-    // public function index(Request $request)
-    // {
-    //     try {
-    //         $perPage = $request->input('per_page', 10);
-    //         $page = $request->input('page', 1);
-
-    //         $books = Book::with('category')->paginate($perPage, ['*'], 'page', $page);
-
-    //         return response()->json([
-    //             'message' => 'Data retrieved successfully',
-    //             'data' => $books->items(),
-    //             'current_page' => $books->currentPage(),
-    //             'last_page' => $books->lastPage(),
-    //             'per_page' => $books->perPage(),
-    //             'total' => $books->total(),
-    //         ]);
-    //     } catch (\Exception $e) {
-    //         return response()->json([
-    //             'message' => 'An error occurred',
-    //             'error' => $e->getMessage(),
-    //         ], 500);
-    //     }
-    // }
-
     /**
      * Store a newly created resource in storage.
      */
@@ -110,10 +86,11 @@ class BookController extends Controller
             $data['image'] = $path . $imageName;
         }
 
-        Book::create($data);
+        $book = Book::create($data);
 
         return response()->json([
             'message' => 'Data added successfully',
+            'data' => $book,
         ], 201);
     }
 
